@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+About Us
+{% endblock title %}
+
+
+{% block navbar %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<nav class="navbar navbar-expand-lg navbar-custom mb-3 ">
+    <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" alt="BackTheNeedy" width="130px"
+        height="50px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link abc" href="/"><span style="color:#f0a500;font-weight:700;">Home</span> <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link abc" href="/about"><span style="color:#f0a500;font-weight:700;">About Us</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link abc" href="/contact"><span style="color:#f0a500;font-weight:700;">Contact Us</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span style="color:#f0a500;font-weight:700;">Support</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <a class="dropdown-item" href="accounts/cloth_new_search"><span
+                            style="color:#f0a500;font-weight:700;">Funds
+                            for Clothing</span></a>
+                    <a class="dropdown-item" href="accounts/food_new_search"><span
+                            style="color:#f0a500;font-weight:700;">Funds
+                            for Food</span></a>
+                    <a class="dropdown-item" href="accounts/edu_new_search"><span
+                            style="color:#f0a500;font-weight:700;">Funds
+                            for Education</span></a>
+                </div>
+            </li>
+
+
+
+
+            {% if user.is_authenticated  %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span style="color:#f0a500;font-weight:700;">Join Us</span>
+                </a>
+                <div class="dropdown-menu abc" aria-labelledby="navbarDropdown2">
+                    <!--<a class="dropdown-item" href="#">Donor</a> -->
+                    <a class="dropdown-item abc" href="accounts/org_reg"><span
+                            style="color:#f0a500;font-weight:700;">Organisation</span></a>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span style="color:#f0a500;font-weight:700;">Hello,</span> <span
+                        style="color:#f0a500;font-weight:600;">{{ user.username }}</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                   
+                    <a class="dropdown-item" href="accounts/logout"><span
+                            style="color:#f0a500;font-weight:700;">Logout</span></a>
+                </div>
+            </li>
+        </ul>
+
+
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span style="color:#f0a500;font-weight:700;">Sign In/Sign Up</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                    <a class="dropdown-item" href="accounts/login"><span style="color:#f0a500;font-weight:700;">Sign
+                            In</span></a>
+                    <a class="dropdown-item" href="accounts/register"><span style="color:#f0a500;font-weight:700;">Sign
+                            Up</span></a>
+                </div>
+            </li>
+        </ul>
+        {% endif %}
+
+    </div>
+</nav>
+
+{% endblock navbar %}
+
+
+
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+.about{
+    padding-top: 160px;
+}
+
+.flip {
+    -webkit-perspective: 800;   
+            perspective: 800;
+          position: relative;
+          text-align: center;
+  }
+  .flip .card.flipped {
+    -webkit-transform: rotatey(-180deg);
+            transform: rotatey(-180deg);
+  }
+  .flip .card {
+      width: 300px;
+      height: 280px;
+      -webkit-transform-style: preserve-3d;
+      -webkit-transition: 0.5s;
+      transform-style: preserve-3d;
+      transition: 0.5s;
+      background-color: #fff;
+      border-radius: 130px;
+     
+  }
+  .flip .card .face {
+    -webkit-backface-visibility: hidden ;
+      backface-visibility: hidden ;
+     z-index: 2;
+     border-radius: 130px;
+  }
+  .flip .card .front {
+     position: absolute;
+     width: 300px;
+     height: 280px;
+     z-index: 1;
+     border-radius: 130px;
+  }
+  .flip .card .front img{
+    width: 300px;
+    height: 280px;
+    border-radius: 130px;
+  }
+  .flip .card .img {
+     position: relative;
+     width: 300px;
+     height: 200px;
+     z-index: 1;
+     border: 2px solid #000;
+     border-radius: 130px;
+  }
+  .flip .card .back {
+    padding-top: 10%;
+    -webkit-transform: rotatey(-180deg);
+            transform: rotatey(-180deg);
+    position: absolute;
+  }
+  .inner{
+    margin:0px !important;
+    width: 270px;
+    padding-top: 15px;
+  }
+
+  .inner_text{
+    padding-top: 10px;
+  }
+</style>
+<script src="{% static 'js/style.js' %}"></script>
+<div class="container" style="padding-top: 100px; padding-left: 60px;">
+     <center>  <h1>Our Team</h1> </center>  
+    <div class="row">
+        <div class="col-sm-3" style="margin-right:40px ;margin-top: 40px;">
+            <div class="flip">
+                <div class="card" style="background-color:#111d5e;">
+                    <div class="face front">
+                        <div class="inner">
+                            <img src="{% static 'img/dunstan.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="face back">
+                        <div class="inner text-center">
+                            <h4 style="color: #f0a500;">Dunstan D'souza</h4>
+                            <h5 style="color: #f0a500;">B.E Computer Engineering</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3" style="margin-right:40px ; margin-top: 40px;">
+            <div class="flip">
+                <div class="card" style="background-color:#707070;">
+                    <div class="face front">
+                        <div class="inner">
+                            <img src="{% static 'img/shorn.jpeg' %}">
+                        </div>
+                    </div>
+                    <div class="face back">
+                        <div class="inner text-center">
+                            <h4 style="color: #f0a500;">Shorn Correia</h4>
+                            <h5 style="color: #f0a500;">B.E Computer Engineering</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3" style="margin-right:40px ;margin-top: 40px;">
+            <div class="flip">
+                <div class="card" style="background-color:#7d0000 ">
+                    <div class="face front">
+                        <div class="inner">
+                            <img src="{% static 'img/mathew.jpeg' %}">
+                        </div>
+                    </div>
+                    <div class="face back">
+                        <div class="inner text-center ">
+                            <h4 class="inner_text" style="color: #f0a500;">Mathew Zachariah</h4>
+                            <h5 class="inner_text" style="color: #f0a500;">B.E Computer Engineering</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top:50px;margin-bottom: 30px;">
+    <h5 style=" font-size:25px;font-family: Sans Serif ; font-weight:700 ;color: #2f2519;letter-spacing:1px">We  as  engineers  often  felt  the  need to give back to the society
+     after  all  the  priviledges  we  received. Sadly  looking  at  our  society today  not  everybody  is  as  previlaged as us to receive excellent
+      education and other basic eminities.India is country which has millions of abandoned children.Some of these children are still previlaged
+       enough  to  enter a  well  established  orphanage. But a major portion  live  in  dilapidated  orphanages. These  small  scale orphanages are started by those people 
+      who are not financially very rich.But they are people with a rich heart who sacrifice everything just so that they can serve these
+       abandoned children.Sadly due to their poor connections they fail to get appropriate funding
+        So  we as  engineers  have decided  to  take  part  in  their  struggle  by  providing them a platform to raise funds for their needs.
+        Our  goal  is  to  connect  the  socially  disconnected  orphanages  to  the  known world  so that their basic eminities such as food clothing shelter are taken care of.
+    </h5>
+</div>
+{% endblock body %}

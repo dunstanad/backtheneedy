@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+
+{% block navbar %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <nav class="navbar navbar-expand-lg navbar-custom mb-3 ">
+    <a class="navbar-brand" href="/"><img src="{% static 'img/logo.png' %}" alt="BackTheNeedy" width="130px"
+        height="50px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link abc" href="/"><span style="color:#f0a500;font-weight:700;">Home</span> <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link abc" href="/about"><span style="color:#f0a500;font-weight:700;">About Us</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link abc" href="/contact"><span style="color:#f0a500;font-weight:700;">Contact Us</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span style="color:#f0a500;font-weight:700;">Support</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <a class="dropdown-item" href="accounts/cloth_new_search"><span style="color:#f0a500;font-weight:700;">Funds
+                for Clothing</span></a>
+            <a class="dropdown-item" href="accounts/food_new_search"><span style="color:#f0a500;font-weight:700;">Funds
+                for Food</span></a>
+            <a class="dropdown-item" href="accounts/edu_new_search"><span style="color:#f0a500;font-weight:700;">Funds
+                for Education</span></a>
+          </div>
+        </li>
+
+
+
+
+        {% if user.is_authenticated  %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span style="color:#f0a500;font-weight:700;">Join Us</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+            <!--<a class="dropdown-item" href="#">Donor</a> -->
+            <a class="dropdown-item" href="accounts/org_reg"><span
+                style="color:#f0a500;font-weight:700;">Organisation</span></a>
+          </div>
+        </li>
+        {% endif %}
+      </ul>
+
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span style="color:#f0a500;font-weight:700;">Hello,</span> <span
+              style="color:#f0a500;font-weight:600;">{{ user.username }}</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <a class="dropdown-item" href="accounts/logout"><span
+                style="color:#f0a500;font-weight:700;">Logout</span></a>
+          </div>
+        </li>
+      </ul>
+
+
+      {% else %}
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle abc" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span style="color:#f0a500;font-weight:700;">Sign In/Sign Up</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <a class="dropdown-item" href="accounts/login"><span style="color:#f0a500;font-weight:700;">Sign
+                In</span></a>
+            <a class="dropdown-item" href="accounts/register"><span style="color:#f0a500;font-weight:700;">Sign
+                Up</span></a>
+          </div>
+        </li>
+      </ul>
+      {% endif %}
+
+    </div>
+  </nav>
+
+  {% endblock navbar %}
+
+
+
+{% block body %} 
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="container-fluid my-3"> 
+        <img src="https://source.unsplash.com/1000x250/?Contact,telephone" class="d-block w-100" alt="...">
+</div>
+<div class="container">
+        <h1 class="text-center my-3">Contact Us</h1>
+        <form method="post" action="">
+        {% csrf_token %}
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Mobile">
+  </div>
+  
+  <div class="form-group">
+    <label for="sugg">Any Suggestions</label>
+    <textarea class="form-control" id="sugg" name="sugg" rows="3"></textarea>
+  </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>        
+</div>
+
+{% endblock body %} 

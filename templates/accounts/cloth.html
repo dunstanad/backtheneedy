@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Clothes Funding {% endblock title %}
+
+
+    {% block navbar %}
+    <div style="background-color:#111d5e ;">
+    <center><h1 style="color: #f0a500;">Clothes Funding</h1></center>
+    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan active-cyan-2 mt-2" action=""
+        method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <i class="fas fa-search" aria-hidden="true"></i>
+        
+        <input class="form-control form-control-sm  w-75" type="text" placeholder="Search by Pincode" name="search"
+            aria-label="Search">
+        <button type="submit" class="btn btn-primary">Search</button>
+      
+    </form>
+</div>
+    {% endblock navbar %}
+
+
+
+
+
+
+
+
+
+
+    {% block body %}
+
+
+    <div class="row">
+        {% for det in od %}
+        <div class="col-3">
+            <div class="card bg-success mb-3 ml-4 mt-3 mr-4">
+                <img class="card-img-top" src="{{det.myfile.url}}" alt="Organisation Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{det.name}}</h5>
+                    <p class="card-text">{{det.need_desc}}</p>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Pincode: </strong>{{det.pincode}}</li>
+                    <li class="list-group-item"><strong>Bank Account No.: </strong>{{det.bank_acc}}</li>
+                    <li class="list-group-item"><strong>Bank IFSC Code: </strong>{{det.bank_ifsc}}</li>
+                    <li class="list-group-item"><strong>UPI ID: </strong>{{det.upi_id}}</li>
+                </ul>
+
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+
+
+    {% endblock body %}
+
+
+    {{% block footer %}
+    {% endblock footer %}}

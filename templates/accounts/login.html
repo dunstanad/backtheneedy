@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login {% endblock title %}
+{% load crispy_forms_tags %}
+{% block navbar %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<h1>Login</h1>
+{% endblock navbar %}
+
+{% block body %}
+<div style="background: white">
+<form method="POST" class="form-group" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Login</button>
+
+</form>
+</div>
+{% endblock body %}
+
+      {% block footer %}
+      {% endblock footer %}
+
+
+      <!--{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Login</title>
+    </head>
+    <body>
+        <div style="background-color:#111d5e ;">
+       <center><h1 style="color: #f0a500;">Login</h1></center>
+       </div>
+       <div style="background-image: repeating-radial-gradient(circle,rgb(189,224,255), rgb(234,176,255), rgb(255, 207,209));">
+        <form method="POST" class="form-group" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Login</button>
+
+</form>
+</div>
+        
+    </body>
+</html>
+
+-->

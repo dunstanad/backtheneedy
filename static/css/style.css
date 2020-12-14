@@ -1,0 +1,71 @@
+.navbar-custom{
+    background-color: #111d5e !important;
+
+}
+
+a.abc:hover{
+  background-color: #DCDCDC;
+}
+
+.about{
+    padding-top: 160px;
+}
+
+.flip {
+    -webkit-perspective: 800;   
+            perspective: 800;
+          position: relative;
+          text-align: center;
+  }
+  .flip .card.flipped {
+    -webkit-transform: rotatey(-180deg);
+            transform: rotatey(-180deg);
+  }
+  .flip .card {
+      width: 300px;
+      height: 280px;
+      -webkit-transform-style: preserve-3d;
+      -webkit-transition: 0.5s;
+      transform-style: preserve-3d;
+      transition: 0.5s;
+      background-color: #fff;
+     
+  }
+  .flip .card .face {
+    -webkit-backface-visibility: hidden ;
+      backface-visibility: hidden ;
+     z-index: 2;
+  }
+  .flip .card .front {
+     position: absolute;
+     width: 300px;
+     height: 280px;
+     z-index: 1;
+  }
+  .flip .card .front img{
+    width: 300px;
+    height: 280px;
+  }
+  .flip .card .img {
+     position: relative;
+     width: 300px;
+     height: 200px;
+     z-index: 1;
+     border: 2px solid #000;
+
+  }
+  .flip .card .back {
+    padding-top: 10%;
+    -webkit-transform: rotatey(-180deg);
+            transform: rotatey(-180deg);
+    position: absolute;
+  }
+  .inner{
+    margin:0px !important;
+    width: 270px;
+    padding-top: 15px;
+  }
+
+  .inner_text{
+    padding-top: 10px;
+  }

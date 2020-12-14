@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register {% endblock title %}
+{% load crispy_forms_tags %}
+{% block navbar %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<h1>Create an account</h1>
+{% endblock navbar %}
+
+{% block body %}
+<div style="background: white">
+<form method="POST" class="form-group" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Register</button>
+
+</form>
+</div>
+{% endblock body %}
+
+      {% block footer %}
+      {% endblock footer %}

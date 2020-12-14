@@ -1,0 +1,41 @@
+<!--
+  {% load static %}
+  {% extends 'base.html' %}
+
+{% block title %}Profile {% endblock title %}
+
+
+      {% block navbar %}  <h1 class="text-center my-3">Profile</h1>   {% endblock navbar %} 
+      {% block body %}
+        <form method="post" action="donor_profile" enctype="multipart/form-data">
+        {% csrf_token %}
+<div class="container">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Mobile">
+  </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>        
+</div>
+      {% endblock body %}
+
+      
+
+
+
+
+ name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    contact = models.CharField(max_length=10)
+    address = models.CharField(max_length=150)
+    city = models.CharField(max_length=15)
+    pincode = models.CharField(max_length=6)
+    myfile = models.ImageField(upload_to='org/img', default="True")
+
+-->
+
+
